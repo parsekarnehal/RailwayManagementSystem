@@ -1,0 +1,35 @@
+<div class="main-content">
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="overview-wrap">
+                        <h2 class="title-1 p-2">My profile</h2>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="account2">
+                                <div class="image img-cir img-120">
+                                    <img src="/images/icon/avatar-01.jpg" alt="John Doe" />
+                                </div>
+                                <h4 class="name">{{data.userData.userName}}</h4>
+                            </div>
+                            <br>
+                            {{> messages}}
+                            <form action="/dashboard/updateProfile" method="POST">
+                                {{>profileForm}}
+                            </form>
+                            <br>
+                            <form action="/dashboard/updatePassword" method="POST">
+                                {{>passwordForm}}
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                {{>footer}}
+            </div>
+        </div>
+    </div>
+</div>

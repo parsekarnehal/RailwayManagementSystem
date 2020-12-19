@@ -1,0 +1,163 @@
+<div class="main-content">
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="overview-wrap">
+                        <h2 class="title-1 p-2">Trains</h2>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    {{#if data.updateTrain.status}}
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-title">
+                                <h3 class="text-center title-2">Update the Train</h3>
+                            </div>
+                            <hr>
+                            {{> messages}}
+                            <form action="/admin/dashboard/trains/update" method="POST">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <input id="trainId" name="trainId" type="text" class="form-control"
+                                                placeholder="Train Id" value="{{data.updateTrain.id}}" hidden required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <input id="trainName" name="trainName" type="text" class="form-control"
+                                                placeholder="Train Name" value="{{data.updateTrain.trainName}}"
+                                                required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <input id="generalSeats" name="generalSeats" type="number"
+                                                        class="form-control" value="{{data.updateTrain.gSeats}}"
+                                                        placeholder="General Seats" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <input id="acSeats" name="acSeats" type="number"
+                                                        class="form-control" value="{{data.updateTrain.acSeats}}"
+                                                        placeholder="AC Seats" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <button id="payment-button" type="submit"
+                                        class="btn btn-lg btn-info btn-block">UPDATE</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    {{else}}
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-title">
+                                <h3 class="text-center title-2">Add a Train</h3>
+                            </div>
+                            <hr>
+                            {{> messages}}
+                            <form action="/admin/dashboard/trains" method="POST">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <input id="trainName" name="trainName" type="text" class="form-control"
+                                                placeholder="Train Name" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <input id="generalSeats" name="generalSeats" type="number"
+                                                        class="form-control" placeholder="General Seats" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <input id="acSeats" name="acSeats" type="number"
+                                                        class="form-control" placeholder="AC Seats" required>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <button id="payment-button" type="submit"
+                                        class="btn btn-lg btn-info btn-block">ADD</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    {{/if}}
+                </div>
+                <div class="col-md-12">
+                    <div class="overview-wrap">
+                        <h2 class="title-1 p-2">Trains List</h2>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <!-- DATA TABLE-->
+                    <div class="table-responsive m-b-40">
+                        <table class="table table-borderless table-data3">
+                            <thead>
+                                <tr>
+                                    <th>S No.</th>
+                                    <th>Train Name</th>
+                                    <th>General Seats</th>
+                                    <th>AC Seats</th>
+                                    <th>Status</th>
+                                    <th>Update</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#each data.trains}}
+                                <tr>
+                                    <td>{{index}}</td>
+                                    <td>{{trainName}}</td>
+                                    <td>{{generalSeats}}</td>
+                                    <td>{{acSeats}}</td>
+                                    <td>
+                                        {{#if canUpdate}}
+                                        {{#if status}}
+                                        <a href="/admin/dashboard/trains/updateStatus/{{id}}">
+                                            <button type="button" class="btn btn-success btn-sm">Active</button>
+                                        </a>
+                                        {{else}}
+                                        <a href="/admin/dashboard/trains/updateStatus/{{id}}">
+                                            <button type="button" class="btn btn-secondary btn-sm">Inactive</button>
+                                        </a>
+                                        {{/if}}
+                                        {{else}}
+                                        <button type="button" class="btn btn-success btn-sm" disabled>Active</button>
+                                        {{/if}}
+                                    </td>
+                                    <td>
+                                        {{#if canUpdate}}
+                                        <a href="/admin/dashboard/trains/update/{{id}}">
+                                            <button type="button" class="btn btn-primary btn-sm">Update</button>
+                                        </a>
+                                        {{else}}
+                                        <button type="button" class="btn btn-primary btn-sm" disabled>Update</button>
+                                        {{/if}}
+                                    </td>
+                                </tr>
+                                {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- END DATA TABLE-->
+                </div>
+                {{>footer}}
+            </div>
+        </div>
+    </div>
+</div>

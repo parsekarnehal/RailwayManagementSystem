@@ -1,0 +1,217 @@
+<div class="main-content">
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="overview-wrap">
+                        <h2 class="title-1 p-2">Schedule</h2>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    {{#if data.updateSchedule.status}}
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-title">
+                                <h3 class="text-center title-2">Update the Schedule</h3>
+                            </div>
+                            <hr>
+                            {{> messages}}
+                            <form action="/admin/dashboard/schedules/update" method="POST">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <input id="scheduleId" name="scheduleId" type="text" class="form-control"
+                                                placeholder="Schedule id" value="{{data.updateSchedule.id}}" hidden
+                                                required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <input id="scheduleName" name="scheduleName" type="text"
+                                                class="form-control" value="{{data.updateSchedule.scheduleName}}"
+                                                placeholder="Schedule Name" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <label for="dHour">Departure Time (24 hour format)</label>
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <div class="form-group">
+                                                            <input id="dHour" name="dHour" type="number"
+                                                                placeholder="Hour" min="0" max="23"
+                                                                value="{{data.updateSchedule.dHour}}"
+                                                                class="form-control" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="form-group">
+                                                            <input id="dMinute" name="dMinute" type="number"
+                                                                placeholder="Minute" min="0" max="59"
+                                                                class="form-control"
+                                                                value="{{data.updateSchedule.dMin}}" required>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <label for="aHour">Arrival Time (24 hour format)</label>
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <div class="form-group">
+                                                            <input id="aHour" name="aHour" type="number"
+                                                                placeholder="Hour" min="0" max="23"
+                                                                value="{{data.updateSchedule.aHour}}"
+                                                                class="form-control" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="form-group">
+                                                            <input id="aMinute" name="aMinute" type="number"
+                                                                placeholder="Minute" min="0" max="59"
+                                                                class="form-control"
+                                                                value="{{data.updateSchedule.aMin}}" required>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <button id="payment-button" type="submit"
+                                        class="btn btn-lg btn-info btn-block">UPDATE</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    {{else}}
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-title">
+                                <h3 class="text-center title-2">Add a Schedule</h3>
+                            </div>
+                            <hr>
+                            {{> messages}}
+                            <form action="/admin/dashboard/schedules" method="POST">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <input id="scheduleName" name="scheduleName" type="text"
+                                                class="form-control" placeholder="Schedule Name" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <label for="dHour">Departure Time (24 hour format)</label>
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <div class="form-group">
+                                                            <input id="dHour" name="dHour" type="number"
+                                                                placeholder="Hour" min="0" max="23" class="form-control"
+                                                                required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="form-group">
+                                                            <input id="dMinute" name="dMinute" type="number"
+                                                                placeholder="Minute" min="0" max="59"
+                                                                class="form-control" required>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <label for="aHour">Arrival Time (24 hour format)</label>
+                                                <div class="row">
+                                                    <div class="col-6">
+                                                        <div class="form-group">
+                                                            <input id="aHour" name="aHour" type="number"
+                                                                placeholder="Hour" min="0" max="23" class="form-control"
+                                                                required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <div class="form-group">
+                                                            <input id="aMinute" name="aMinute" type="number"
+                                                                placeholder="Minute" min="0" max="59"
+                                                                class="form-control" required>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <button id="payment-button" type="submit"
+                                        class="btn btn-lg btn-info btn-block">ADD</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    {{/if}}
+                </div>
+                <div class="col-md-12">
+                    <div class="overview-wrap">
+                        <h2 class="title-1 p-2">Schedules List</h2>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <!-- DATA TABLE-->
+                    <div class="table-responsive m-b-40">
+                        <table class="table table-borderless table-data3">
+                            <thead>
+                                <tr>
+                                    <th>S No.</th>
+                                    <th>Schedule Name</th>
+                                    <th>Arrival Time</th>
+                                    <th>Departure Time</th>
+                                    <th>Status</th>
+                                    <th>Update</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#each data.schedules}}
+                                <tr>
+                                    <td>{{index}}</td>
+                                    <td>{{scheduleName}}</td>
+                                    <td>{{arrival}}</td>
+                                    <td>{{departure}}</td>
+                                    <td>
+                                        {{#if canUpdate}}
+                                        {{#if status}}
+                                        <a href="/admin/dashboard/schedules/updateStatus/{{id}}">
+                                            <button type="button" class="btn btn-success btn-sm">Active</button>
+                                        </a>
+                                        {{else}}
+                                        <a href="/admin/dashboard/schedules/updateStatus/{{id}}">
+                                            <button type="button" class="btn btn-secondary btn-sm">Inactive</button>
+                                        </a>
+                                        {{/if}}
+                                        {{else}}
+                                        <button type="button" class="btn btn-success btn-sm" disabled>Active</button>
+                                        {{/if}}
+                                    </td>
+                                    <td>
+                                        {{#if canUpdate}}
+                                        <a href="/admin/dashboard/schedules/update/{{id}}">
+                                            <button type="button" class="btn btn-primary btn-sm">Update</button>
+                                        </a>
+                                        {{else}}
+                                        <button type="button" class="btn btn-primary btn-sm" disabled>Update</button>
+                                        {{/if}}
+                                    </td>
+                                </tr>
+                                {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                {{>footer}}
+            </div>
+        </div>
+    </div>
+</div>

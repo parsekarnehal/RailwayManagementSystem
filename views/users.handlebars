@@ -1,0 +1,154 @@
+<div class="main-content">
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="overview-wrap">
+                        <h2 class="title-1 p-2">Users</h2>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-title">
+                                <h3 class="text-center title-2">Search User</h3>
+                            </div>
+                            <hr>
+                            {{> messages}}
+                            <form action="/admin/dashboard/users/search" method="POST">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label for="userEmails" class=" form-control-label">User Email</label>
+                                            <input list="Emails" placeholder="Email" class="form-control" id="userEmails" name="userEmail" autocomplete="on">
+                                        </div>
+                                        <datalist id="Emails">
+                                            {{#each data.userData}}
+                                                <option value="{{userEmail}}">
+                                            {{/each}}
+                                        </datalist>
+                                    </div>
+                                </div>
+                                <div>
+                                    <button id="payment-button" type="submit"
+                                        class="btn btn-lg btn-info btn-block">SEARCH</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-title">
+                                <h3 class="text-center title-2">Filter Users</h3>
+                            </div>
+                            <hr>
+                            <form action="/admin/dashboard/users/filter" method="POST">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <label for="cc-exp" class=" form-control-label">Minimun Age</label>
+                                        <div class="form-group">
+                                            <input id="minAge" name="minAge" type="number"
+                                                class="form-control cc-exp" value="{{data.updateStation.stationName}}"
+                                                placeholder="Min Age" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <label for="cc-exp" class=" form-control-label">Maximum Age</label>
+                                        <div class="form-group">
+                                            <input id="maxAge" name="maxAge" type="number"
+                                                class="form-control cc-exp" value="{{data.updateStation.stationName}}"
+                                                placeholder="Max Age" required>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row form-group">
+                                <div class="col col-md-2">
+                                    <label class=" form-control-label">Gender</label>
+                                </div>
+                                <div class="col col-md-9">
+                                    <div class="form-check">
+                                        <div class="radio">
+                                            <label for="radio1" class="form-check-label ">
+                                                <input type="radio" id="radio1" name="gender" value="Male"
+                                                    class="form-check-input" checked>Male
+                                            </label>
+                                        </div>
+                                        <div class="radio">
+                                            <label for="radio2" class="form-check-label ">
+                                                <input type="radio" id="radio2" name="gender" value="Female"
+                                                    class="form-check-input">Female
+                                            </label>
+                                        </div>
+                                        <div class="radio">
+                                            <label for="radio3" class="form-check-label ">
+                                                <input type="radio" id="radio3" name="gender" value="Others"
+                                                    class="form-check-input">Others
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                                <div>
+                                    <button id="payment-button" type="submit"
+                                        class="btn btn-lg btn-info btn-block">FILTER</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-9">
+                            <div class="overview-wrap">
+                                <h2 class="title-1 p-2">Users List</h2>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <a href="/admin/dashboard/users/pdf" target="_blank" class="float-right"><button class="btn btn-outline-success"><strong>PDF </strong><i class="fa fa-download"></i></button></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <!-- DATA TABLE-->
+                    <div class="table-responsive m-b-40">
+                        <table class="table table-borderless table-data3">
+                            <thead>
+                                <tr>
+                                    <th>S No.</th>
+                                    <th>Name</th>
+                                    <th>Address</th>
+                                    <th>Age</th>
+                                    <th>Gender</th>
+                                    <th>Contact</th>
+                                    <th>Email</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#each data.users}}
+                                <tr>
+                                    <td>
+                                        {{#if index}}
+                                            {{index}}
+                                        {{else}}
+                                            1
+                                        {{/if}}
+                                    </td>
+                                    <td>{{userName}}</td>
+                                    <td>{{userAddress}}</td>
+                                    <td>{{userYear}}</td>
+                                    <td>{{userGender}}</td>
+                                    <td>{{userContact}}</td>
+                                    <td>{{userEmail}}</td>
+                                </tr>
+                                {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                {{>footer}}
+            </div>
+        </div>
+    </div>
+</div>

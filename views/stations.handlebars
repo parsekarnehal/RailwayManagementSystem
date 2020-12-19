@@ -1,0 +1,159 @@
+<div class="main-content">
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="overview-wrap">
+                        <h2 class="title-1 p-2">Station</h2>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    {{#if data.updateStation.status}}
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-title">
+                                <h3 class="text-center title-2">Update the Station</h3>
+                            </div>
+                            <hr>
+                            {{> messages}}
+                            <form action="/admin/dashboard/stations/update" method="POST">
+                                <div class="form-group">
+                                    <input id="stateId" name="stationId" type="text" class="form-control"
+                                        placeholder="id" value="{{data.updateStation.id}}" hidden required>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <label for="cc-exp" class=" form-control-label">Station Name</label>
+                                        <div class="form-group">
+                                            <input id="cc-exp" name="stationName" type="text"
+                                                class="form-control cc-exp" value="{{data.updateStation.stationName}}"
+                                                placeholder="Name" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <div class="col col-md-12">
+                                                <label for="stateId" class=" form-control-label">State
+                                                    Name</label>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <select id="select" class="form-control" required>
+                                                    <option value="{{data.updateStation.stateName}}" selected>
+                                                        {{data.updateStation.stateName}}
+                                                    </option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <button id="payment-button" type="submit"
+                                        class="btn btn-lg btn-info btn-block">UPDATE</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    {{else}}
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-title">
+                                <h3 class="text-center title-2">Add a Station</h3>
+                            </div>
+                            <hr>
+                            {{> messages}}
+                            <form action="/admin/dashboard/stations" method="POST">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <label for="cc-exp" class=" form-control-label">Station Name</label>
+                                        <div class="form-group">
+                                            <input id="cc-exp" name="stationName" type="text"
+                                                class="form-control cc-exp" placeholder="Name" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            <div class="col col-md-12">
+                                                <label for="stateId" class=" form-control-label">State
+                                                    Name</label>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <select name="stateId" id="select" class="form-control" required>
+                                                    {{#each data.states}}
+                                                    {{#if status}}
+                                                    <option value="{{id}}">{{stateName}}</option>
+                                                    {{/if}}
+                                                    {{/each}}
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <button id="payment-button" type="submit"
+                                        class="btn btn-lg btn-info btn-block">ADD</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    {{/if}}
+                </div>
+                <div class="col-md-12">
+                    <div class="overview-wrap">
+                        <h2 class="title-1 p-2">Stations List</h2>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <!-- DATA TABLE-->
+                    <div class="table-responsive m-b-40">
+                        <table class="table table-borderless table-data3">
+                            <thead>
+                                <tr>
+                                    <th>S No.</th>
+                                    <th>Station Name</th>
+                                    <th>State Name</th>
+                                    <th>Status</th>
+                                    <th>Update</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#each data.stations}}
+                                <tr>
+                                    <td>{{index}}</td>
+                                    <td>{{stationName}}</td>
+                                    <td>{{stateName}}</td>
+                                    <td>
+                                        {{#if canUpdate}}
+                                        {{#if status}}
+                                        <a href="/admin/dashboard/stations/updateStatus/{{id}}">
+                                            <button type="button" class="btn btn-success btn-sm">Active</button>
+                                        </a>
+                                        {{else}}
+                                        <a href="/admin/dashboard/stations/updateStatus/{{id}}">
+                                            <button type="button" class="btn btn-secondary btn-sm">Inactive</button>
+                                        </a>
+                                        {{/if}}
+                                        {{else}}
+                                        <button type="button" class="btn btn-success btn-sm" disabled>Active</button>
+                                        {{/if}}
+                                    </td>
+                                    <td>
+                                        {{#if canUpdate}}
+                                        <a href="/admin/dashboard/stations/update/{{id}}/{{stateName}}">
+                                            <button type="button" class="btn btn-primary btn-sm">Update</button>
+                                        </a>
+                                        {{else}}
+                                        <button type="button" class="btn btn-primary btn-sm" disabled>Update</button>
+                                        {{/if}}
+                                    </td>
+                                </tr>
+                                {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- END DATA TABLE-->
+                </div>
+                {{>footer}}
+            </div>
+        </div>
+    </div>
+</div>

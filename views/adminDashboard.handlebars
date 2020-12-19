@@ -1,0 +1,105 @@
+<div class="main-content" id="dashMain">
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="overview-wrap">
+                        <h2 class="title-1">Welcome {{data.userData.userName}}</h2>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <section class="statistic statistic2">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-6 col-lg-3">
+                                    <div class="statistic__item statistic__item--green tCenter">
+                                        <span class="desc">Active States</span>
+                                        <br><br>
+                                        <h1 class="number">{{data.statesCount}}</h1>
+                                        <div class="icon">
+                                            <i class="fa fa-location-arrow"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-3">
+                                    <div class="statistic__item statistic__item--orange tCenter">
+                                        <span class="desc">Active Stations</span>
+                                        <br><br>
+                                        <h1 class="number">{{data.stationsCount}}</h1>
+                                        <div class="icon">
+                                            <i class="fa fa-stop"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-3">
+                                    <div class="statistic__item statistic__item--blue tCenter" style="padding: 1.4rem 0.75rem !important;">
+                                        <span class="desc">Active Trains</span>
+                                        <br><br>
+                                        <h1 class="number">{{data.trainsCount}}</h1>
+                                        <div class="icon">
+                                            <i class="fa fa-train"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-3">
+                                    <div class="statistic__item statistic__item--red tCenter">
+                                        <span class="desc">Active Schedules</span>
+                                        <br><br>
+                                        <h1 class="number">{{data.schedulesCount}}</h1>
+                                        <div class="icon">
+                                            <i class="fa fa-calendar-alt"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 col-lg-4">
+                                    <div class="statistic__item statistic__item--orange tCenter">
+                                        <span class="desc">Active Routes</span>
+                                        <br><br>
+                                        <h1 class="number">{{data.routesCount}}</h1>
+                                        <div class="icon">
+                                            <i class="fa fa-road"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-4">
+                                    <div class="statistic__item statistic__item--blue tCenter">
+                                        <span class="desc">Admins</span>
+                                        <br><br>
+                                        <h1 class="number">{{data.adminsCount}}</h1>
+                                        <div class="icon">
+                                            <i class="fa fa-user"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-4">
+                                    <div class="statistic__item statistic__item--green tCenter" style="padding: 1.4rem 0.75rem !important;">
+                                        <span class="desc">Users</span>
+                                        <br><br>
+                                        <h1 class="number">{{data.usersCount}}</h1>
+                                        <div class="icon">
+                                            <i class="fa fa-users"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="col-md-12">
+                    <div class="overview-wrap">
+                        <h2 class="title-1">Trains Booking This Month</h2>
+                    </div>
+                    <br><br>
+                    <div class="au-card m-b-30">
+                        <div class="au-card-inner">
+                            <canvas id="trainBarChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+                {{>footer}}
+            </div>
+        </div>
+    </div>
+</div>

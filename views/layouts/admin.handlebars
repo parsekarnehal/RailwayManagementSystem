@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {{> header}}
+</head>
+<body>
+    <div class="page-wrapper">
+        <header class="header-mobile d-block d-lg-none">
+            <div class="header-mobile__bar" style="background-color: white !important;">
+                <div class="container-fluid">
+                    <div class="header-mobile-inner">
+                        <a class="logo" href="/admin/dashboard">
+                            <img src="/images/icon/logo.png" alt="RMS" />
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <nav class="navbar-mobile">
+                <div class="container-fluid">
+                    <ul class="navbar-mobile__list list-unstyled">
+                        <li>
+                            <a href="/admin/dashboard">
+                                <i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                        </li>
+                        <li>
+                            <a href="/admin/dashboard/states">
+                                <i class="fa fa-location-arrow"></i>States</a>
+                        </li>
+                        <li>
+                            <a href="/admin/dashboard/stations">
+                                <i class="fas fa-stop"></i>Stations</a>
+                        </li>
+                        <li>
+                            <a href="/admin/dashboard/trains">
+                                <i class="fa fa-train"></i>Trains</a>
+                        </li>
+                        <li>
+                            <a href="/admin/dashboard/schedules">
+                                <i class="fas fa-calendar-alt"></i>Schedules</a>
+                        </li>
+                        <li>
+                            <a href="/admin/dashboard/routes">
+                                <i class="fa fa-road"></i>Routes</a>
+                        </li>
+                        <li>
+                            <a href="/admin/dashboard/admins">
+                                <i class="fa fa-user"></i>Admins</a>
+                        </li>
+                        <li class="has-sub">
+                            <a class="js-arrow" href="#">
+                                <i class="fas fa-info-circle"></i>Reports</a>
+                            <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
+                                <li>
+                                    <a href="/admin/dashboard/users">
+                                        <i class="fa fa-users"></i>Users</a>
+                                </li>
+                                <li>
+                                    <a href="/admin/dashboard/bookings">
+                                        <i class="fa fa-train"></i>Train Bookings</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <aside class="menu-sidebar d-none d-lg-block">
+            <div class="logo" style="background-color: white !important;">
+                <a href="/admin/dashboard">
+                    <img src="/images/icon/logo.png" alt="Cool Admin" />
+                </a>
+            </div>
+            <div class="menu-sidebar__content js-scrollbar1">
+                <nav class="navbar-sidebar">
+                    <ul class="list-unstyled navbar__list">
+                        <li>
+                            <a href="/admin/dashboard">
+                                <i class="fas fa-tachometer-alt"></i>Dashboard</a>
+                        </li>
+                        <li>
+                            <a href="/admin/dashboard/states">
+                                <i class="fa fa-location-arrow"></i>States</a>
+                        </li>
+                        <li>
+                            <a href="/admin/dashboard/stations">
+                                <i class="fas fa-stop"></i>Stations</a>
+                        </li>
+                        <li>
+                            <a href="/admin/dashboard/trains">
+                                <i class="fa fa-train"></i>Trains</a>
+                        </li>
+                        <li>
+                            <a href="/admin/dashboard/schedules">
+                                <i class="fas fa-calendar-alt"></i>Schedules</a>
+                        </li>
+                        <li>
+                            <a href="/admin/dashboard/routes">
+                                <i class="fa fa-road"></i>Routes</a>
+                        </li>
+                        <li>
+                            <a href="/admin/dashboard/admins">
+                                <i class="fa fa-user"></i>Admins</a>
+                        </li>
+                        <li class="has-sub">
+                            <a class="js-arrow" href="#">
+                                <i class="fas fa-info-circle"></i>Reports</a>
+                            <ul class="navbar-mobile-sub__list list-unstyled js-sub-list">
+                                <li>
+                                    <a href="/admin/dashboard/users">
+                                        <i class="fa fa-users"></i>Users</a>
+                                </li>
+                                <li>
+                                    <a href="/admin/dashboard/bookings">
+                                        <i class="fa fa-train"></i>Train Bookings</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+        <div class="page-container">
+            <header class="header-desktop">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+                        <button class="hamburger hamburger--slider displayToggle" type="button">
+                            <span class="hamburger-box" style="margin-top: 0.7rem;">
+                                <span class="hamburger-inner"></span>
+                            </span>
+                        </button>
+                        <div class="header-wrap float-right">
+                            <div class="header-button">
+                                <div class="account-wrap">
+                                    <div class="account-item clearfix js-item-menu">
+                                        <div class="image">
+                                            <img src="/images/icon/avatar-01.jpg" alt="John Doe" />
+                                        </div>
+                                        <div class="content">
+                                            <a class="js-acc-btn" href="#">{{ data.userData.userName }}</a>
+                                        </div>
+                                        <div class="account-dropdown js-dropdown">
+                                            <div class="info clearfix">
+                                                <div class="image">
+                                                    <a href="#">
+                                                        <img src="/images/icon/avatar-01.jpg" alt="John Doe" />
+                                                    </a>
+                                                </div>
+                                                <div class="content">
+                                                    <h5 class="name">
+                                                        <a href="#">{{ data.userData.userName }}</a>
+                                                    </h5>
+                                                    <span class="email">{{ data.userData.userEmail }}</span>
+                                                </div>
+                                            </div>
+                                            <div class="account-dropdown__body">
+                                                <div class="account-dropdown__item">
+                                                    <a href="/admin/dashboard/profile">
+                                                        <i class="zmdi zmdi-account"></i>Account</a>
+                                                </div>
+                                            </div>
+                                            <div class="account-dropdown__footer">
+                                                <a href="/admin/logout">
+                                                    <i class="zmdi zmdi-power"></i>Logout</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            {{{body}}}
+
+            {{> scripts}}
+        </div>
+</body>
+</html>

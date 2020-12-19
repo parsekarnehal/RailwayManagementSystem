@@ -1,0 +1,117 @@
+<div class="main-content">
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+            
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="overview-wrap">
+                        <h2 class="title-1">Welcome {{data.userData.userName}}</h2>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <section class="statistic statistic2">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-6 col-lg-3">
+                                    <div class="statistic__item statistic__item--green tCenter">
+                                        <span class="desc">members</span>
+                                        <br><br>
+                                        <h1 class="number">{{data.memberCount}}</h1>
+                                        <div class="icon">
+                                            <i class="fa fa-users"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-3">
+                                    <div class="statistic__item statistic__item--orange tCenter">
+                                        <span class="desc">Tickets Active</span>
+                                        <br><br>
+                                        <h1 class="number">{{data.tActive}}</h1>
+                                        <div class="icon">
+                                            <i class="fa fa-ticket"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-3">
+                                    <div class="statistic__item statistic__item--blue tCenter" style="padding: 1.4rem 0.75rem !important;">
+                                        <span class="desc">Tickets Cancelled</span>
+                                        <br><br>
+                                        <h1 class="number">{{data.tCancelled}}</h1>
+                                        <div class="icon">
+                                            <i class="fa fa-ticket"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-lg-3">
+                                    <div class="statistic__item statistic__item--red tCenter">
+                                        <span class="desc">Total Spent</span>
+                                        <br><br>
+                                        <h1 class="number">₹ {{data.tCost}}</h1>
+                                        <div class="icon">
+                                            <i class="fa fa-inr"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+                <div class="col-md-9">
+                    <div class="overview-wrap">
+                        <h2 class="title-1">This month transactions</h2>
+                    </div>
+                </div>
+                <br>{{> messages}}<br>
+                <div class="col-md-12">
+                    <div class="table-responsive m-b-40">
+                        <table class="table table-borderless table-data3">
+                            <thead>
+                                <tr>
+                                    <th>S No.</th>
+                                    <th>User Name</th>
+                                    <th>Train</th>
+                                    <th>Arrival</th>
+                                    <th>Departure</th>
+                                    <th>Date(YYYY-MM-DD)</th>
+                                    <th>Coach</th>
+                                    <th>Source State</th>
+                                    <th>Source Station</th>
+                                    <th>Destination State</th>
+                                    <th>Destination Station</th>
+                                    <th>Fare</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#each data.monthTransactions}}
+                                <tr>
+                                    <td>{{index}}</td>
+                                    <td>{{userName}}</td>
+                                    <td>{{trainName}}</td>
+                                    <td>{{arrival}}</td>
+                                    <td>{{departure}}</td>
+                                    <td>{{ticketDate}}</td>
+                                    <td>{{ticketCoach}}</td>
+                                    <td>{{sStateName}}</td>
+                                    <td>{{sStationName}}</td>
+                                    <td>{{dStateName}}</td>
+                                    <td>{{dStationName}}</td>
+                                    <td>{{ticketFare}}</td>
+                                    <td>
+                                        {{#if status}}
+                                        <p style="color: green;">Booked</p>
+                                        {{else}}
+                                        <p style="color: red;">Cancelled</p>
+                                        {{/if}}
+                                    </td>
+                                </tr>
+                                {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                {{>footer}}
+            </div>
+        </div>
+    </div>
+</div>

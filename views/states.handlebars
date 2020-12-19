@@ -1,0 +1,112 @@
+<div class="main-content">
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="overview-wrap">
+                        <h2 class="title-1 p-2">States</h2>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    {{#if  data.updateState.status}}
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-title">
+                                <h3 class="text-center title-2">Update the State</h3>
+                            </div>
+                            <hr>
+                            {{> messages}}
+                            <form action="/admin/dashboard/states/update" method="POST">
+                                <div class="form-group">
+                                    <input id="stateId" name="stateId" type="text" class="form-control"
+                                        placeholder="State Id" value="{{data.updateState.id}}" hidden required>
+                                </div>
+                                <div class="form-group">
+                                    <input id="stateName" name="stateName" value="{{data.updateState.stateName}}"
+                                        type="text" class="form-control" placeholder="State Name" required>
+                                </div>
+                                <div>
+                                    <button id="payment-button" type="submit"
+                                        class="btn btn-lg btn-info btn-block">UPDATE</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    {{else}}
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-title">
+                                <h3 class="text-center title-2">Add a State</h3>
+                            </div>
+                            <hr>
+                            {{> messages}}
+                            <form action="/admin/dashboard/states" method="POST">
+                                <div class="form-group">
+                                    <input id="stateName" name="stateName" type="text" class="form-control"
+                                        placeholder="State Name" required>
+                                </div>
+                                <div>
+                                    <button id="payment-button" type="submit"
+                                        class="btn btn-lg btn-info btn-block">ADD</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    {{/if}}
+                </div>
+                <div class="col-md-12">
+                    <div class="overview-wrap">
+                        <h2 class="title-1 p-2">States List</h2>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="table-responsive m-b-40">
+                        <table class="table table-borderless table-data3">
+                            <thead>
+                                <tr>
+                                    <th>S No.</th>
+                                    <th>State Name</th>
+                                    <th>Status</th>
+                                    <th>Update</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#each data.states}}
+                                <tr>
+                                    <td>{{index}}</td>
+                                    <td>{{stateName}}</td>
+                                    <td>
+                                        {{#if canUpdate}}
+                                        {{#if status}}
+                                        <a href="/admin/dashboard/states/updateStatus/{{id}}">
+                                            <button type="button" class="btn btn-success btn-sm">Active</button>
+                                        </a>
+                                        {{else}}
+                                        <a href="/admin/dashboard/states/updateStatus/{{id}}">
+                                            <button type="button" class="btn btn-secondary btn-sm">Inactive</button>
+                                        </a>
+                                        {{/if}}
+                                        {{else}}
+                                        <button type="button" class="btn btn-success btn-sm" disabled>Active</button>
+                                        {{/if}}
+                                    </td>
+                                    <td>
+                                        {{#if canUpdate}}
+                                        <a href="/admin/dashboard/states/update/{{id}}">
+                                            <button type="button" class="btn btn-primary btn-sm">Update</button>
+                                        </a>
+                                        {{else}}
+                                        <button type="button" class="btn btn-primary btn-sm" disabled>Update</button>
+                                        {{/if}}
+                                    </td>
+                                </tr>
+                                {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
+                    {{>footer}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

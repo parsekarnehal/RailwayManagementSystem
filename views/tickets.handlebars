@@ -1,0 +1,239 @@
+<div class="main-content">
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="overview-wrap">
+                        <h2 class="title-1">Buy Tickets</h2>
+                    </div>
+                </div>
+                <br><br>
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-title">
+                                <h3 class="text-center title-2">Buy Tickets</h3>
+                            </div>
+                            <hr>
+                            <div style="display: none;" class="alert alert-danger alert-dismissible fade show tMessage"
+                                role="alert">
+                                <p class="tMessageText"></p>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            {{> messages}}
+                            <form action="/dashboard/tickets/book" method="POST">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label for="sourceState" class=" form-control-label">Source
+                                                        State
+                                                        Name</label>
+                                                    <select name="sStateId" id="tSourceState" class="form-control"
+                                                        required>
+                                                        <option value="0">Select State</option>
+                                                        {{#each data.states}}
+                                                        <option value="{{id}}">{{stateName}}</option>
+                                                        {{/each}}
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label for="sourceStation" class=" form-control-label">Source
+                                                        Station
+                                                        Name</label>
+                                                    <select name="sStationId" id="tSourceStation" class="form-control"
+                                                        required>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label for="destinationState"
+                                                        class=" form-control-label">Destination
+                                                        State
+                                                        Name</label>
+                                                    <select name="dStateId" id="tDestinationState" class="form-control"
+                                                        required>
+                                                        <option value="0">Select State</option>
+                                                        {{#each data.states}}
+                                                        <option value="{{id}}">{{stateName}}</option>
+                                                        {{/each}}
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col-6">
+                                                <div class="form-group">
+                                                    <label for="destinationStation"
+                                                        class=" form-control-label">Destination
+                                                        Station
+                                                        Name</label>
+                                                    <select name="dStationId" id="tDestinationStation"
+                                                        class="form-control" required>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label for="route">Route</label>
+                                        <div class="form-group">
+                                            <select name="routeId" id="tRoute" class="form-control" required>
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="schedule" class=" form-control-label">Schedule (24 hour
+                                                format)</label>
+                                            <select name="scheduleId" id="tSchedule" class="form-control" required>
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <label for="members">Members</label>
+                                        <div class="form-group">
+                                            <select name="members" id="tMembers" class="form-control" multiple size="3"
+                                                required>
+                                                {{#each data.members}}
+                                                <option value="{{id}}">{{userName}}</option>
+                                                {{/each}}
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="coach">Coach</label>
+                                            <select name="ticketCoach" id="tCoach" class="form-control" required>
+                                                <option id="tAc" value="1" selected>AC</option>
+                                                <option id="tGeneral" value="0">General</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <input class="form-control" type="text" id="tFare" name="ticketFare" hidden>
+                                    <div class="col-md-12">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="date">Date</label>
+                                                    <input id="tDate" name="ticketDate" type="date" placeholder="Date"
+                                                        class="form-control" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label for="train">Train</label>
+                                                <div class="form-group">
+                                                    <select name="trainId" id="tTrain" class="form-control" required>
+
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div style="display: none;"
+                                    class="alert alert-danger alert-dismissible fade show tMessage" role="alert">
+                                    <p class="tMessageText"></p>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div>
+                                    <button id="payment-button" type="submit" class="btn btn-lg btn-info btn-block">BOOK
+                                        TICKET</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="overview-wrap">
+                        <h2 class="title-1 p-2">Tickets</h2>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <!-- DATA TABLE-->
+                    <div class="table-responsive m-b-40">
+                        <table class="table table-borderless table-data3">
+                            <thead>
+                                <tr>
+                                    <th>S No.</th>
+                                    <th>User Name</th>
+                                    <th>Train</th>
+                                    <th>Arrival</th>
+                                    <th>Departure</th>
+                                    <th>Date(YYYY-MM-DD)</th>
+                                    <th>Coach</th>
+                                    <th>Source State</th>
+                                    <th>Source Station</th>
+                                    <th>Destination State</th>
+                                    <th>Destination Station</th>
+                                    <th>Fare</th>
+                                    <th>Download</th>
+                                    <th>Cancel</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#each data.tickets}}
+                                <tr>
+                                    <td>{{index}}</td>
+                                    <td>{{userName}}</td>
+                                    <td>{{trainName}}</td>
+                                    <td>{{arrival}}</td>
+                                    <td>{{departure}}</td>
+                                    <td>{{ticketDate}}</td>
+                                    <td>{{ticketCoach}}</td>
+                                    <td>{{sStateName}}</td>
+                                    <td>{{sStationName}}</td>
+                                    <td>{{dStateName}}</td>
+                                    <td>{{dStationName}}</td>
+                                    <td>{{ticketFare}}</td>
+                                    <td>
+                                        <a href="/dashboard/transactions/pdf/{{id}}" target="_blank"><button class="btn btn-outline-success btn-sm"><strong>PDF </strong><i class="fa fa-download"></i></button></a>
+                                    </td>
+                                    <td>
+                                        <button type="button" value="{{id}}" class="tCancel btn btn-danger btn-sm"
+                                            data-toggle="modal" data-target="#exampleModal">Cancel Ticket</button>
+                                    </td>
+                                </tr>
+                                {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                {{>footer}}
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Confirm Cancel</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div style="text-align: center;" class="modal-body">
+                Are you sure you want to calcel this ticket
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <a id="aCancel"><button type="button" class="btn btn-danger">Cancel Ticket</button></a>
+            </div>
+        </div>
+    </div>
+</div>

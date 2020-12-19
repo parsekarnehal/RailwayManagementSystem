@@ -1,0 +1,105 @@
+<div class="main-content">
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="overview-wrap">
+                        <h2 class="title-1 p-2">Transactions</h2>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="card-title">
+                                <h3 class="text-center title-2">Filter Transactions</h3>
+                            </div>
+                            <hr>
+                            {{> messages}}
+                            <form action="#" method="POST">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <label for="tMonth" class="form-control-label">Month</label>
+                                            <input type="month" name="tMonth" class="form-control" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="tYear" class="form-control-label">Year</label>
+                                            <select name="tYear" id="tYear" class="form-control" required>
+                                                {{#each data.yearArray}}
+                                                <option value="{{this}}">{{this}}</option>
+                                                {{/each}}
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <button id="payment-button" type="submit"
+                                        class="btn btn-lg btn-info btn-block">SEARCH</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="overview-wrap">
+                        <h2 class="title-1 p-2">Transaction List</h2>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <a href="/dashboard/transactions/pdf" target="_blank" class="float-right"><button class="btn btn-outline-success"><strong>PDF </strong><i class="fa fa-download"></i></button></a>
+                </div>
+                <div class="col-md-12">
+                    <div class="table-responsive m-b-40">
+                        <table class="table table-borderless table-data3">
+                            <thead>
+                                <tr>
+                                    <th>S No.</th>
+                                    <th>User Name</th>
+                                    <th>Train</th>
+                                    <th>Arrival</th>
+                                    <th>Departure</th>
+                                    <th>Date(YYYY-MM-DD)</th>
+                                    <th>Coach</th>
+                                    <th>Source State</th>
+                                    <th>Source Station</th>
+                                    <th>Destination State</th>
+                                    <th>Destination Station</th>
+                                    <th>Fare</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {{#each data.transactions}}
+                                <tr>
+                                    <td>{{index}}</td>
+                                    <td>{{userName}}</td>
+                                    <td>{{trainName}}</td>
+                                    <td>{{arrival}}</td>
+                                    <td>{{departure}}</td>
+                                    <td>{{ticketDate}}</td>
+                                    <td>{{ticketCoach}}</td>
+                                    <td>{{sStateName}}</td>
+                                    <td>{{sStationName}}</td>
+                                    <td>{{dStateName}}</td>
+                                    <td>{{dStationName}}</td>
+                                    <td>{{ticketFare}}</td>
+                                    <td>
+                                        {{#if status}}
+                                        <p style="color: green;">Booked</p>
+                                        {{else}}
+                                        <p style="color: red;">Cancelled</p>
+                                        {{/if}}
+                                    </td>
+                                </tr>
+                                {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                {{>footer}}
+            </div>
+        </div>
+    </div>
+</div>
