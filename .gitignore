@@ -1,2 +1,3 @@
-/node_modules
-/static/pdfs/*
+/SourceCode/node_modules
+/SourceCode/static/pdfs/*
+/SourceCode/.env

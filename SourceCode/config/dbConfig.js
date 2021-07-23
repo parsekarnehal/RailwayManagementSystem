@@ -1,6 +1,8 @@
 const Sequelize = require("sequelize");
-const sequelize = new Sequelize("railway", "root", "nehalnehal", {
-    host: "localhost",
+require("dotenv").config();
+
+const sequelize = new Sequelize(process.env.DATABASE_NAME, process.env.DATABASE_USER, process.env.DATABASE_PASSWORD, {
+    host: process.env.DATABASE_HOST,
     dialect: "mysql",
     operatorsAliases: 0,
     logging: false,
@@ -14,7 +16,7 @@ const sequelize = new Sequelize("railway", "root", "nehalnehal", {
 
 sequelize
     .authenticate()
-    .then()
+    .then(() => console.log("Database conected"))
     .catch((err) => console.log(err.message));
 
 module.exports = sequelize;

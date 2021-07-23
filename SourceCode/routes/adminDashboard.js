@@ -96,7 +96,6 @@ router.get("/", (req, res) => {
             res.render("adminDashboard", options);
         })
         .catch((e) => {
-            console.log(e.message);
             options.data.statesCount = statesCount;
             options.data.stationsCount = stationsCount;
             options.data.trainsCount = trainsCount;
@@ -204,7 +203,6 @@ router.get("/states", (req, res) => {
             res.render("states", options);
         })
         .catch((e) => {
-            console.log(e.message);
             options.data.messageArray = messageArray;
             res.render("states", options);
         });
@@ -268,13 +266,11 @@ router.get("/states/update/:id", (req, res) => {
                     res.render("states", options);
                 })
                 .catch((e) => {
-                    console.log(e.message);
                     options.data.messageArray = messageArray;
                     res.render("states", options);
                 });
         })
         .catch((e) => {
-            console.log(e.message);
             options.data.messageArray = messageArray;
             res.render("states", options);
         });
@@ -300,7 +296,6 @@ router.post("/states/update", (req, res) => {
                                 res.redirect("/admin/dashboard/states");
                             })
                             .catch((e) => {
-                                console.log(e.message);
                                 res.redirect("/admin/dashboard/states");
                             });
                     } else {
@@ -309,12 +304,10 @@ router.post("/states/update", (req, res) => {
                     }
                 })
                 .catch((e) => {
-                    console.log(e.message);
                     res.redirect("/admin/dashboard/states");
                 });
         })
         .catch((e) => {
-            console.log(e.message);
             res.redirect("/admin/dashboard/states");
         });
 });
@@ -368,13 +361,11 @@ router.get("/stations", (req, res) => {
                     res.render("stations", options);
                 })
                 .catch((e) => {
-                    console.log(e.message);
                     options.data.messageArray = messageArray;
                     res.render("stations", options);
                 });
         })
         .catch((e) => {
-            console.log(e.message);
             options.data.messageArray = messageArray;
             res.render("stations", options);
         });
@@ -457,19 +448,16 @@ router.get("/stations/update/:id/:stateName", (req, res) => {
                             res.render("stations", options);
                         })
                         .catch((e) => {
-                            console.log(e.message);
                             options.data.messageArray = messageArray;
                             res.render("stations", options);
                         });
                 })
                 .catch((e) => {
-                    console.log(e.message);
                     options.data.messageArray = messageArray;
                     res.render("stations", options);
                 });
         })
         .catch((e) => {
-            console.log(e.message);
             options.data.messageArray = messageArray;
             res.render("stations", options);
         });
@@ -495,7 +483,6 @@ router.post("/stations/update", (req, res) => {
                                 res.redirect("/admin/dashboard/stations");
                             })
                             .catch((e) => {
-                                console.log(e.message);
                                 res.redirect("/admin/dashboard/stations");
                             });
                     } else {
@@ -504,13 +491,10 @@ router.post("/stations/update", (req, res) => {
                     }
                 })
                 .catch((e) => {
-                    console.log(e);
-                    console.log(e.message);
                     res.redirect("/admin/dashboard/stations");
                 });
         })
         .catch((e) => {
-            console.log(e.message);
             res.redirect("/admin/dashboard/stations");
         });
 });
@@ -550,7 +534,6 @@ router.get("/trains", (req, res) => {
             res.render("trains", options);
         })
         .catch((e) => {
-            console.log(e.message);
             options.data.messageArray = messageArray;
             res.render("trains", options);
         });
@@ -621,13 +604,11 @@ router.get("/trains/update/:id", (req, res) => {
                     res.render("trains", options);
                 })
                 .catch((e) => {
-                    console.log(e.message);
                     options.data.messageArray = messageArray;
                     res.render("trains", options);
                 });
         })
         .catch((e) => {
-            console.log(e.message);
             options.data.messageArray = messageArray;
             res.render("trains", options);
         });
@@ -656,7 +637,6 @@ router.post("/trains/update", (req, res) => {
                                 res.redirect("/admin/dashboard/trains");
                             })
                             .catch((e) => {
-                                console.log(e.message);
                                 res.redirect("/admin/dashboard/trains");
                             });
                     } else {
@@ -665,12 +645,10 @@ router.post("/trains/update", (req, res) => {
                     }
                 })
                 .catch((e) => {
-                    console.log(e.message);
                     res.redirect("/admin/dashboard/trains");
                 });
         })
         .catch((e) => {
-            console.log(e.message);
             res.redirect("/admin/dashboard/trains");
         });
 });
@@ -710,7 +688,6 @@ router.get("/schedules", (req, res) => {
             res.render("schedules", options);
         })
         .catch((e) => {
-            console.log(e.message);
             options.data.messageArray = messageArray;
             res.render("schedules", options);
         });
@@ -792,13 +769,11 @@ router.get("/schedules/update/:id", (req, res) => {
                     res.render("schedules", options);
                 })
                 .catch((e) => {
-                    console.log(e.message);
                     options.data.messageArray = messageArray;
                     res.render("schedules", options);
                 });
         })
         .catch((e) => {
-            console.log(e.message);
             options.data.messageArray = messageArray;
             res.render("schedules", options);
         });
@@ -835,7 +810,6 @@ router.post("/schedules/update", (req, res) => {
                                 res.redirect("/admin/dashboard/schedules");
                             })
                             .catch((e) => {
-                                console.log(e.message);
                                 res.redirect("/admin/dashboard/schedules");
                             });
                     } else {
@@ -844,12 +818,10 @@ router.post("/schedules/update", (req, res) => {
                     }
                 })
                 .catch((e) => {
-                    console.log(e.message);
                     res.redirect("/admin/dashboard/schedules");
                 });
         })
         .catch((e) => {
-            console.log(e.message);
             res.redirect("/admin/dashboard/schedules");
         });
 });
@@ -941,25 +913,21 @@ router.get("/routes", (req, res) => {
                                     res.render("routes", options);
                                 })
                                 .catch((e) => {
-                                    console.log(e.message);
                                     options.data.messageArray = messageArray;
                                     res.render("routes", options);
                                 });
                         })
                         .catch((e) => {
-                            console.log(e.message);
                             options.data.messageArray = messageArray;
                             res.render("routes", options);
                         });
                 })
                 .catch((e) => {
-                    console.log(e.message);
                     options.data.messageArray = messageArray;
                     res.render("routes", options);
                 });
         })
         .catch((e) => {
-            console.log(e.message);
             options.data.messageArray = messageArray;
             res.render("routes", options);
         });
@@ -1032,7 +1000,6 @@ router.post("/routes", (req, res) => {
                                 res.redirect("/admin/dashboard/routes");
                             })
                             .catch((e) => {
-                                console.log(e.message);
                                 res.redirect("/admin/dashboard/routes");
                             });
                     });
@@ -1042,7 +1009,6 @@ router.post("/routes", (req, res) => {
                 }
             })
             .catch((e) => {
-                console.log(e.message);
                 res.redirect("/admin/dashboard/routes");
             });
     }
@@ -1143,31 +1109,26 @@ router.get("/routes/update/:id/:sStation/:dStation", (req, res) => {
                                             res.render("routes", options);
                                         })
                                         .catch((e) => {
-                                            console.log(e.message);
                                             options.data.messageArray = messageArray;
                                             res.render("routes", options);
                                         });
                                 })
                                 .catch((e) => {
-                                    console.log(e.message);
                                     options.data.messageArray = messageArray;
                                     res.render("routes", options);
                                 });
                         })
                         .catch((e) => {
-                            console.log(e.message);
                             options.data.messageArray = messageArray;
                             res.render("routes", options);
                         });
                 })
                 .catch((e) => {
-                    console.log(e.message);
                     options.data.messageArray = messageArray;
                     res.render("routes", options);
                 });
         })
         .catch((e) => {
-            console.log(e.message);
             options.data.messageArray = messageArray;
             res.render("routes", options);
         });
@@ -1247,31 +1208,26 @@ router.post("/routes/update", (req, res) => {
                                                         );
                                                     })
                                                     .catch((e) => {
-                                                        console.log(e.message);
                                                         res.redirect(
                                                             "/admin/dashboard/routes"
                                                         );
                                                     });
                                             })
                                             .catch((e) => {
-                                                console.log(e.message);
                                                 res.redirect(
                                                     "/admin/dashboard/routes"
                                                 );
                                             });
                                     })
                                     .catch((e) => {
-                                        console.log(e.message);
                                         res.redirect("/admin/dashboard/routes");
                                     });
                             })
                             .catch((e) => {
-                                console.log(e.message);
                                 res.redirect("/admin/dashboard/routes");
                             });
                     })
                     .catch((e) => {
-                        console.log(e.message);
                         res.redirect("/admin/dashboard/routes");
                     });
             } else {
@@ -1280,7 +1236,6 @@ router.post("/routes/update", (req, res) => {
             }
         })
         .catch((e) => {
-            console.log(e.message);
             res.redirect("/admin/dashboard/routes");
         });
 });
@@ -1321,13 +1276,11 @@ router.get("/users", (req, res) => {
                     res.render("users", options);
                 })
                 .catch((e) => {
-                    console.log(e.message);
                     options.data.messageArray = messageArray;
                     res.render("users", options);
                 });
         })
         .catch((e) => {
-            console.log(e.message);
             options.data.messageArray = messageArray;
             res.render("users", options);
         });
@@ -1379,7 +1332,6 @@ router.post("/users/search", (req, res) => {
                                     res.render("users", options);
                                 })
                                 .catch((e) => {
-                                    console.log(e.message);
                                     options.data.messageArray = messageArray;
                                     res.render("users", options);
                                 });
@@ -1401,14 +1353,12 @@ router.post("/users/search", (req, res) => {
                                     res.render("users", options);
                                 })
                                 .catch((e) => {
-                                    console.log(e.message);
                                     options.data.messageArray = messageArray;
                                     res.render("users", options);
                                 });
                         }
                     })
                     .catch((e) => {
-                        console.log(e);
                         options.data.messageArray = messageArray;
                         res.render("users", options);
                     });
@@ -1422,7 +1372,6 @@ router.post("/users/search", (req, res) => {
             }
         })
         .catch((e) => {
-            console.log(e.message);
             options.data.messageArray = messageArray;
             res.render("users", options);
         });
@@ -1487,7 +1436,6 @@ router.post("/users/filter", (req, res) => {
                                 res.render("users", options);
                             })
                             .catch((e) => {
-                                console.log(e.message);
                                 messageArray.push({
                                     text: "No user found",
                                     type: "danger",
@@ -1514,20 +1462,17 @@ router.post("/users/filter", (req, res) => {
                                 res.render("users", options);
                             })
                             .catch((e) => {
-                                console.log(e.message);
                                 options.data.messageArray = messageArray;
                                 res.render("users", options);
                             });
                     }
                 })
                 .catch((e) => {
-                    console.log(e.message);
                     options.data.messageArray = messageArray;
                     res.render("users", options);
                 });
         })
         .catch((e) => {
-            console.log(e.message);
             options.data.messageArray = messageArray;
             res.render("users", options);
         });
@@ -1559,7 +1504,6 @@ router.get("/admins", (req, res) => {
             res.render("admins", options);
         })
         .catch((e) => {
-            console.log(e.message);
             options.data.messageArray = messageArray;
             res.render("admins", options);
         });
@@ -1638,7 +1582,6 @@ router.post("/admins", (req, res) => {
             }
         })
         .catch((e) => {
-            console.log(e.message);
             res.redirect("/admin/dashboard/admins");
         });
 });
@@ -1662,7 +1605,6 @@ router.post("/updateProfile", (req, res) => {
             res.redirect("/admin/dashboard/profile");
         })
         .catch((e) => {
-            console.log(e.message);
             res.redirect("/admin/dashboard/profile");
         });
 });
@@ -1683,7 +1625,6 @@ router.post("/updatePassword", (req, res) => {
                 if (e.custom) {
                     req.flash("error_msg", e.message);
                 } else {
-                    console.log(e.message);
                 }
                 res.redirect("/admin/dashboard/profile");
             });
@@ -1734,7 +1675,6 @@ router.get("/bookings", (req, res) => {
                                         type: "danger",
                                     });
                                 } else {
-                                    console.log(e.message);
                                 }
                                 options.data.messageArray = messageArray;
                                 res.render("bookings", options);
@@ -1747,7 +1687,6 @@ router.get("/bookings", (req, res) => {
                                 type: "danger",
                             });
                         } else {
-                            console.log(e.message);
                         }
                         options.data.messageArray = messageArray;
                         res.render("bookings", options);
@@ -1755,7 +1694,6 @@ router.get("/bookings", (req, res) => {
             }
         })
         .catch((e) => {
-            console.log(e.message);
             options.data.messageArray = messageArray;
             res.render("bookings", options);
         });
@@ -1777,7 +1715,6 @@ router.get("/bookings/getSchedules/:routeId", (req, res) => {
             if (e.custom) {
                 sendData.message = e.message;
             } else {
-                console.log(e.message);
             }
             res.send(sendData);
         });
@@ -1898,7 +1835,6 @@ router.post("/bookings", (req, res) => {
                                                             );
                                                         })
                                                         .catch((e) => {
-                                                            console.log(e);
                                                             options.data.messageArray = messageArray;
                                                             res.render(
                                                                 "bookings",
@@ -1907,7 +1843,6 @@ router.post("/bookings", (req, res) => {
                                                         });
                                                 })
                                                 .catch((e) => {
-                                                    console.log(e);
                                                     res.redirect(
                                                         "/admin/dashboard/bookings"
                                                     );
@@ -1915,7 +1850,6 @@ router.post("/bookings", (req, res) => {
                                         }
                                     })
                                     .catch((e) => {
-                                        console.log(e);
                                         res.redirect(
                                             "/admin/dashboard/bookings"
                                         );
@@ -1928,7 +1862,6 @@ router.post("/bookings", (req, res) => {
                                         type: "danger",
                                     });
                                 } else {
-                                    console.log(e.message);
                                 }
                                 options.data.messageArray = messageArray;
                                 res.render("bookings", options);
@@ -1941,7 +1874,6 @@ router.post("/bookings", (req, res) => {
                                 type: "danger",
                             });
                         } else {
-                            console.log(e);
                         }
                         options.data.messageArray = messageArray;
                         res.render("bookings", options);
@@ -1949,7 +1881,6 @@ router.post("/bookings", (req, res) => {
             }
         })
         .catch((e) => {
-            console.log(e);
             options.data.messageArray = messageArray;
             res.render("bookings", options);
         });
@@ -1981,7 +1912,6 @@ router.get("/bookings/getRoutes/:trainId", (req, res) => {
                     if (e.custom) {
                         sendData.message = e.message;
                     } else {
-                        console.log(e.message);
                     }
                     res.send(sendData);
                 });
@@ -1991,7 +1921,6 @@ router.get("/bookings/getRoutes/:trainId", (req, res) => {
             if (e.custom) {
                 sendData.message = e.message;
             } else {
-                console.log(e.message);
             }
             res.send(sendData);
         });

@@ -5,8 +5,11 @@ const session = require("express-session");
 const passport = require("passport");
 const flash = require("connect-flash");
 const { ensureAuthenticated } = require("./config/auth");
+const cors = require("cors");
 
 const app = express();
+
+app.use(cors());
 
 app.set("views", path.join(__dirname, "views"));
 app.engine("handlebars", exphbs({ defaultLayout: "in" }));
